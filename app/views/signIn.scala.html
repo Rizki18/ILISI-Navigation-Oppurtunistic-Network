@@ -1,0 +1,66 @@
+@(signInForm: Form[forms.SignInForm.Data], socialProviders: com.mohiva.play.silhouette.impl.providers.SocialProviderRegistry)(implicit request: RequestHeader, messages: Messages, webJarAssets: WebJarAssets)
+
+@import com.mohiva.play.silhouette.impl.providers.oauth2.ClefProvider
+@import b3.inline.fieldConstructor
+
+@main(Messages("sign.in.title")) {
+    <div class="row">
+            <div class="col-md-4 col-sm-6 col-md-offset-4 col-sm-offset-3">
+                <header>
+                <h1 class="page-title">@messages("sign.in.credentials")</h1>
+                </header>
+                <hr>
+                @helper.form(action = controllers.routes.SignInController.submit()) {
+                    @helper.CSRF.formField
+                    <label for="form-sign-in-email">Email:</label>
+                    @b3.email(
+                        signInForm("email"), 
+                        '_hiddenLabel -> messages("email"),
+                        'type -> "email",
+                        'class -> "form-control",
+                        'name -> "form-sign-in-email",
+                        'id -> "form-sign-in-email",
+                        'required -> true
+                    )
+                    <label for="form-sign-in-email">Password:</label>
+                    @b3.password(
+                        signInForm("password"), 
+                        '_hiddenLabel -> messages("password"),
+                        'type -> "password",
+                        'class -> "form-control",
+                        'name -> "form-sign-in-password",
+                        'id -> "form-sign-in-password",
+                        'required -> true
+                    )
+                    @b3.checkbox(signInForm("rememberMe"), '_text -> messages("remember.me"), 'checked -> true)
+    
+                    <div class="form-group clearfix">
+                        <div>
+                            <button id="submit" type="submit" class="btn pull-right btn-default">@messages("sign.in")</button>
+                        </div>
+                    </div>
+                }
+    
+                <div>
+                    <p class="not-a-member">@Messages("not.a.member") <a href="@routes.SignUpController.view">@Messages("sign.up.now")</a> | <a href="@routes.ForgotPasswordController.view()" title="@Messages("forgot.your.password")">@Messages("forgot.your.password")</a></p>
+                </div>
+            
+                    @if(socialProviders.providers.nonEmpty) {
+                        <div class="social-providers">
+                            <p>@Messages("or.use.social")</p>
+                            <div>
+                            @for(p <- socialProviders.providers if p.id != "clef") {
+                                <a href="@routes.SocialAuthController.authenticate(p.id)" class="provider @p.id" title="@Messages(p.id)"><img src="@routes.Assets.at(s"images/providers/${p.id}.png")" width="64px" height="64px" alt="@Messages(p.id)"></a>
+                            }
+                            </div>
+                            @defining(socialProviders.get[ClefProvider]) { clef =>
+                                @if(clef.isDefined) {
+                                    <script type="text/javascript" src="https://clef.io/v3/clef.js" class="clef-button" data-app-id="@clef.get.settings.clientID" data-color="blue" data-style="flat" data-redirect-url="@clef.get.settings.redirectURL" data-type="login"></script>
+                                }
+                            }
+                        </div>
+                    }
+    
+            </div>
+        </div>
+}
