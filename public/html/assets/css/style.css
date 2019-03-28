@@ -31,6 +31,19 @@ Headers:		'Montserrat', sans-serif;
 
 -------------------------------------------------------------------*/
 /* 1. Element styling */
+
+#map {
+  height: 425px;
+}
+/* Optional: Makes the sample page fill the window. */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+
+
 a {
   -moz-transition: 0.4s;
   -webkit-transition: 0.4s;

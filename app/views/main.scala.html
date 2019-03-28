@@ -3,7 +3,9 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+            
         <meta charset="utf-8">
+       
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
@@ -13,15 +15,8 @@
     <link rel="stylesheet" href="@routes.Assets.at("assets/bootstrap/css/bootstrap.css")" type="text/css">
     <link rel="stylesheet" href="@routes.Assets.at("assets/css/bootstrap-select.min.css")" type="text/css">
     <link rel="stylesheet" href="@routes.Assets.at("assets/css/style.css")" type="text/css">
+    
     <link rel="stylesheet" href="@routes.Assets.at("assets/css/user.style.css")" type="text/css">
-    
-    <!-- Home Styles -->
-    <link rel="stylesheet" href="@routes.Assets.at("assets/css/owl.carousel.css")" type="text/css">
-    <link rel="stylesheet" href="@routes.Assets.at("assets/css/jquery.nouislider.min.css")" type="text/css">
-    <link rel="stylesheet" href="@routes.Assets.at("assets/css/leaflet.css")" type="text/css">
-    <link rel="stylesheet" href="@routes.Assets.at("assets/css/jquery.mCustomScrollbar.css")" type="text/css">
-    <link rel="stylesheet" href="@routes.Assets.at("assets/css/colors/blue.css")" type="text/css"
-    
             <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
             <!--[if lt IE 9]>
             <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -130,6 +125,23 @@
                             <!-- /.block-->
                         </div>
                         <!-- end Page Content-->
+                        
+                     
+
+
+                        <div id="right-panel">
+                    
+                    
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                    
+                            </div>
+                            <input type="text" id="pac-input" class="form-control" placeholder="Adresse">
+                    
+                        </div>
+                        <input type="hidden" id="distance" value="..."/>
+                        <input type="hidden" id="duration" value="..."/>
+                    </div>  
                     </main>
                     </div>
                     <!-- end Page Canvas-->
@@ -138,8 +150,8 @@
             </div>
             <!-- end Outer Wrapper-->
 
+         
 
-<script type="text/javascript" src="@routes.Assets.at("assets/js/jquery-2.1.0.min.js")"></script>
 <script type="text/javascript" src="@routes.Assets.at("assets/js/before.load.js")"></script>
 <script type="text/javascript" src="@routes.Assets.at("assets/js/jquery-migrate-1.2.1.min.js")"></script>
 <script type="text/javascript" src="@routes.Assets.at("assets/bootstrap/js/bootstrap.min.js")"></script>
@@ -147,6 +159,23 @@
 <script type="text/javascript" src="@routes.Assets.at("assets/js/bootstrap-select.min.js")"></script>
 <script type="text/javascript" src="@routes.Assets.at("assets/js/jquery.hotkeys.js")"></script>
 <script type="text/javascript" src="@routes.Assets.at("assets/js/custom.js")"></script>
+<!--
+    <script type="text/javascript" src="@routes.Assets.at("assets/js/sweetalert.min.js")"></script>
+<script type="text/javascript" src="@routes.Assets.at("assets/js/d3.min.js")"></script>
+<script type="text/javascript" src="@routes.Assets.at("assets/js/topojson.v0.min.js")"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCt6upiIEBBjyXDJAcofd5Yrs0F1ufFzWM&libraries=geometry&libraries=places,geometry" type="text/javascript"></script>
+<script type="text/javascript" src="@routes.Assets.at("assets/js/bo/options.js")"></script>
+<script type="text/javascript" src="@routes.Assets.at("assets/js/bo/MohammediaMap.js")"></script>
+<script type="text/javascript" src="@routes.Assets.at("assets/js/bo/contextApp.js")"></script>
+<script type="text/javascript" src="@routes.Assets.at("assets/js/bo/Singleton.js")"></script>
+<script type="text/javascript" src="@routes.Assets.at("assets/js/bo/Services.js")"></script>
+<script type="text/javascript" src="@routes.Assets.at("assets/js/bo/Trajet.js")"></script>
+<script type="text/javascript" src="@routes.Assets.at("assets/js/bo/PointInteret.js")"></script>
+<script type="text/javascript" src="@routes.Assets.at("assets/js/bo/PositionLatLng.js")"></script>
+<script type="text/javascript" src="@routes.Assets.at("assets/js/bo/Polygon.js")"></script>
+<script type="text/javascript" src="@routes.Assets.at("assets/js/bo/VoronoiDiagram.js")"></script>
+<script type="text/javascript" src="@routes.Assets.at("assets/js/appMain/mainApp.js")"></script>
+-->
 
 <!--[if lte IE 9]>
 <script type="text/javascript" src="assets/js/ie-scripts.js"></script>

@@ -22,8 +22,8 @@
                           <div class="line"></div>
                       </div>
                   </div>
-                  <!--/.toggle-navigation-->
-                  <div id="map" class="has-parallax"></div>
+                  <!--/.toggle-navigation-->   
+                  <div id="map" class="map-canvas" class="has-parallax"></div>
               </div>
               <!-- end Map -->
               <!--Items List-->
@@ -61,7 +61,7 @@
                 <div class="form-group">
                                               <label for="location">Location</label>
                                               <div class="input-group location">
-                                                  <input type="text" class="form-control" id="location" placeholder="Enter Location">
+                                                  <input type="text" class="form-control" id="pac-input" placeholder="Enter Location">
                                                   <span class="input-group-addon"><i class="fa fa-map-marker geolocation" data-toggle="tooltip" data-placement="bottom" title="Find my position"></i></span>
                                               </div>
                                           </div>
@@ -134,16 +134,21 @@
                               <h3 class="pull-left">POI Near Your Destination</h3>
                               <div class="buttons pull-right">
                                   <span>Display:</span>
-                                  <span class="icon active" id="display-grid"><i class="fa fa-th"></i></span>
-                                  <span class="icon" id="display-list"><i class="fa fa-th-list"></i></span>
+                                  <span class="icon" id="display-grid"><i class="fa fa-th"></i></span>
+                                  <span class="icon  active" id="display-list"><i class="fa fa-th-list"></i></span>
                               </div>
                           </header>
-                          <ul class="results grid">
-
+                          <ul>
+                           
                           </ul>
                           <div class="scroller__track">
-                              <div class="scroller__bar"></div>
+                              <div class="scroller__bar">
+                                 <table id="resultsPoi">
+                           
+                                 </table>
+                              </div>
                           </div>
+                          
                       </div>
                   </div>
                   <!--results-->
@@ -158,23 +163,30 @@
       <!-- end Page Content-->
   </div>
   <!-- end Page Canvas-->
-  <script type="text/javascript" src="@routes.Assets.at("assets/js/leaflet.js")"></script>
-  <script type="text/javascript" src="@routes.Assets.at("assets/js/leaflet-providers.js")"></script>
-  <script type="text/javascript" src="@routes.Assets.at("assets/js/leaflet.markercluster.js")"></script>
-  <script type="text/javascript" src="@routes.Assets.at("assets/js/icheck.min.js")"></script>
-  <script type="text/javascript" src="@routes.Assets.at("assets/js/jquery.nouislider.all.min.js")"></script>
-  <script type="text/javascript" src="@routes.Assets.at("assets/js/jquery.mCustomScrollbar.concat.min.js")"></script>
-  <script type="text/javascript" src="@routes.Assets.at("assets/js/custom.js")"></script>
-  <script type="text/javascript" src="@routes.Assets.at("assets/js/maps.js")"></script>
+  <script type="text/javascript" src="@routes.Assets.at("assets/js/jquery-2.1.0.min.js")"></script>
+  <script type="text/javascript" src="@routes.Assets.at("assets/js/sweetalert.min.js")"></script>
+  <script type="text/javascript" src="@routes.Assets.at("assets/js/d3.min.js")"></script>
+  <script type="text/javascript" src="@routes.Assets.at("assets/js/topojson.v0.min.js")"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCt6upiIEBBjyXDJAcofd5Yrs0F1ufFzWM&libraries=geometry&libraries=places,geometry" type="text/javascript"></script>
+  <script type="text/javascript" src="@routes.Assets.at("assets/js/bo/options.js")"></script>
+  <script type="text/javascript" src="@routes.Assets.at("assets/js/bo/MohammediaMap.js")"></script>
+  <script type="text/javascript" src="@routes.Assets.at("assets/js/bo/contextApp.js")"></script>
+  <script type="text/javascript" src="@routes.Assets.at("assets/js/bo/Singleton.js")"></script>
+  <script type="text/javascript" src="@routes.Assets.at("assets/js/bo/Services.js")"></script>
+  <script type="text/javascript" src="@routes.Assets.at("assets/js/bo/Trajet.js")"></script>
+  <script type="text/javascript" src="@routes.Assets.at("assets/js/bo/PointInteret.js")"></script>
+  <script type="text/javascript" src="@routes.Assets.at("assets/js/bo/PositionLatLng.js")"></script>
+  <script type="text/javascript" src="@routes.Assets.at("assets/js/bo/Polygon.js")"></script>
+  <script type="text/javascript" src="@routes.Assets.at("assets/js/bo/VoronoiDiagram.js")"></script>
+  <script type="text/javascript" src="@routes.Assets.at("assets/js/appMain/mainApp.js")"></script>
+  
 
   <script>
     var _latitude = 51.541216;
     var _longitude = -0.095678;
     var jsonPath = 'assets/json/real-estate.json.txt';
     var mapProvider = 'HERE.normalDayGrey';
-
     // Load JSON data and create OSM
-
     $.getJSON(jsonPath)
             .done(function(json) {
                 createHomepageOSM(_latitude,_longitude,json,mapProvider);
@@ -183,9 +195,7 @@
                 console.log(error);
             })
     ;
-
     // Set if language is RTL and load Owl Carousel
-
     $(window).load(function(){
         var rtl = false; // Use RTL
         initializeOwl(rtl);
