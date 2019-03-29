@@ -7,7 +7,7 @@
 
 // case class User() {
 //   val id = 1
-//   val name = "john"
+//   val name = "ayoub"
 //   val score = 8.5
 // }
 
@@ -16,7 +16,7 @@
 //   def service = Action { request =>
 //     object MyResult {
 //         val resultCode = 0
-//         val resultTextMessage = "sss" 
+//         val resultTextMessage = "retrieve database mongodb" 
 //     }
 //     Ok(Json(MyResult))
 // }
